@@ -8,6 +8,8 @@ import java.util.UUID;
 
 @Service
 public interface BeerService {
+
+    void updateBeerById(UUID beerId, Beer beer);
     Beer getBeerById(UUID beerId);
      List<Beer> listBeers();
 

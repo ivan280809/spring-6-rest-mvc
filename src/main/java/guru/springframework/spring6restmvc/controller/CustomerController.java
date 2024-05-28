@@ -20,6 +20,11 @@ public class CustomerController {
 
     CustomerService customerService;
 
+    @PutMapping("/{customerId}")
+    public ResponseEntity<Void> handleUpdate(@PathVariable("customerId") UUID customerId, @RequestBody Customer customer){
+        customerService.updateCustomerById(customerId, customer);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
     @PostMapping
     public ResponseEntity<Void> handlePost(@RequestBody Customer customer){
 
