@@ -20,6 +20,16 @@ public class CustomerController {
 
     CustomerService customerService;
 
+    @PatchMapping("/{customerId}")
+    public ResponseEntity<Void> handlePatch(@PathVariable("customerId") UUID customerId, @RequestBody Customer customer){
+        customerService.patchCustomerById(customerId, customer);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+    @DeleteMapping("/{customerId}")
+    public ResponseEntity<Void> deleteCustomer(@PathVariable("customerId") UUID customerId){
+        customerService.deleteCustomerById(customerId);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
     @PutMapping("/{customerId}")
     public ResponseEntity<Void> handleUpdate(@PathVariable("customerId") UUID customerId, @RequestBody Customer customer){
         customerService.updateCustomerById(customerId, customer);
