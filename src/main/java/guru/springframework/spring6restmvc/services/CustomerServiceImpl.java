@@ -50,4 +50,10 @@ public class CustomerServiceImpl implements CustomerService {
                 .stream()
                 .toList();
     }
+
+    @Override
+    public Customer saveCustomer(Customer customer) {
+        customerMap.put(customer.getId(), customer);
+        return customer;
+    }
 }
